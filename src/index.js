@@ -2,8 +2,12 @@ import "./style.sass";
 
 import IMask from 'imask';
 import axios from "axios";
+import simpleParallax from 'simple-parallax-js';
 
 import { Modal } from 'bootstrap'
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 let modal = '';
 
@@ -42,11 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
     mask: /^[\d ()+]+$/
   };
 
-  initAnchors()
+  initAnchors();
 
   IMask(element, maskOptions);
 
+  AOS.init();
+
   modal = new Modal(document.querySelector('.modal'))
+
+  var image = document.getElementsByClassName('banner');
+  new simpleParallax(image, {
+    orientation: 'down',
+    scale: 1.1,
+    delay: 0.1
+  });
 });
 
 document.querySelector('.js-send-btn').addEventListener('click', () => {
