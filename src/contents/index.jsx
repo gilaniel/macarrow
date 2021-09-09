@@ -10,8 +10,11 @@ import GalleryImg from '../images/gallery.png'
 import Insta from '../images/insta.svg'
 import About from '../images/about_logo.png'
 
+import Video from '../video/Misha_inst_bit_2.mp4'
+import Poster from '../images/banner.png'
+
 import Form from "../components/form";
-import { Button, Modal, ModalFooter } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 const Home = () => {
   const { locale, formatMessage } = useIntl();
@@ -50,7 +53,9 @@ const Home = () => {
       <Seo title="Maccarow studio" />
 
       <div className="banner-container" data-sal="fade" data-sal-duration="500" data-sal-duration="1000">
-        <div className="banner"></div>
+        <video loop muted autoPlay playsInline poster={Poster}>
+          <source src={Video} type="video/mp4" />
+        </video>
         <Anchor className="scroll-to-btn" anchor={'#black'} />
       </div>
 
