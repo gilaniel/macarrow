@@ -1,51 +1,56 @@
 {
-  "name": "macarrow",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "bin": {
-    "macarrow": "webpack.config.js"
-  },
-  "scripts": {
-    "start": "NODE_ENV=development webpack --watch --config webpack.config.js",
-    "start_win": "set NODE_ENV=development&&webpack --watch --config ./bin/webpack.config.js",
-    "build": "NODE_ENV=production webpack --config ./bin/webpack.config.js",
-    "build_dev": "NODE_ENV=development webpack --config ./bin/webpack.config.js",
-    "build_win": "set NODE_ENV=development&&webpack --config ./bin/webpack.config.js"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@popperjs/core": "^2.10.1",
     "aos": "^3.0.0-beta.6",
-    "axios": "^0.21.1",
-    "babel-loader": "^8.2.2",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^5.1.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "cors": "^2.8.5",
-    "css-loader": "^3.6.0",
-    "express": "^4.17.1",
-    "extract-loader": "^5.1.0",
-    "file-loader": "^6.0.0",
-    "html-loader": "^1.1.0",
-    "html-webpack-plugin": "^4.3.0",
-    "imask": "^6.1.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "path": "^0.12.7",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.2",
-    "simple-parallax-js": "^5.6.2",
-    "simplebar": "^5.3.5",
-    "style-loader": "^3.2.1",
-    "terser-webpack-plugin": "^5.2.0",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.10.3"
+    "bootstrap": "^5.1.1",
+    "gatsby": "^3.13.0",
+    "gatsby-core-utils": "^2.13.0",
+    "gatsby-plugin-i18n": "^1.0.1",
+    "gatsby-plugin-image": "^1.13.0",
+    "gatsby-plugin-manifest": "^3.13.0",
+    "gatsby-plugin-offline": "^4.13.0",
+    "gatsby-plugin-react-helmet": "^4.13.0",
+    "gatsby-plugin-sass": "^4.13.0",
+    "gatsby-plugin-scroll-reveal": "^0.0.7",
+    "gatsby-plugin-sharp": "^3.13.0",
+    "gatsby-source-filesystem": "^3.13.0",
+    "gatsby-transformer-sharp": "^3.13.0",
+    "imask": "^6.2.0",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2",
+    "ptz-i18n": "^1.0.0",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.6.3",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-intl": "^5.20.10",
+    "sass": "^1.39.0"
   },
   "devDependencies": {
-    "@webpack-cli/serve": "^1.5.2"
+    "prettier": "^2.3.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Futura PT';
+  src: url('futura-pt-book.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('futura-pt-heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,416 @@
+@import "bootstrap/scss/_functions"
+@import "bootstrap/scss/_variables"
+@import "bootstrap/scss/_mixins"
+@import "bootstrap/scss/_containers"
+@import "bootstrap/scss/_grid"
+@import "bootstrap/scss/_utilities"
+@import "bootstrap/scss/_buttons"
+@import "bootstrap/scss/_modal"
+@import "bootstrap/scss/_tooltip"
+@import "bootstrap/scss/_spinners"
+@import "bootstrap/scss/_close"
+
+@import "../fonts/fonts.css"
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: 'Futura PT', sans-serif
+  font-weight: 800
+  overflow-x: hidden
+
+.banner-container
+  position: relative
+  overflow: hidden
+
+.banner
+  height: 100vh
+  min-height: 400px
+  background: url('../images/banner.png') no-repeat
+  background-position: 50%
+  background-size: cover
+
+.scroll-to-btn
+  border: 1px solid #cecaca
+  border-radius: 22px
+  bottom: 0
+  height: 37px
+  margin-left: -11px
+  margin-bottom: 30px
+  margin-top: -35px
+  width: 22px
+
+.scroll-to-btn, .scroll-to-btn:before
+  position: absolute
+  left: 50%
+
+.scroll-to-btn:before
+  content: ""
+  width: 6px
+  height: 6px
+  background: #cecaca
+  margin-left: -3px
+  top: 8px
+  border-radius: 4px
+  animation-duration: 1.5s
+  animation-iteration-count: infinite
+  animation-name: mouse-scroll
+
+@keyframes mouse-scroll
+  0%
+    opacity: 1
+  to
+    opacity: 0
+    transform: translateY(15px)
+
+.tt-uc
+  text-transform: uppercase
+
+.fs-11
+  font-size: 11px
+
+.fs-21
+  font-size: 21px
+
+.fs-24
+  font-size: 24px
+
+.fs-26
+  font-size: 26px
+
+.fw-normal
+  font-weight: 500
+
+.ls-5
+  letter-spacing: 0.5em
+
+.ls-18
+  letter-spacing: 0.18em
+
+.grey-color
+  color: #636363
+
+.ta-center
+  text-align: center
+
+.jc-center
+  justify-content: center
+
+.jc-sb
+  justify-content: space-between
+
+.jc-end
+  justify-content: flex-end
+
+.ai-center
+  align-items: center
+
+.df
+  display: flex
+
+@each $margin in (3, 5, 10, 15, 20, 25, 30, 35, 50, 60, 65, 80)
+  .mt-#{$margin}
+    margin-top: #{$margin}px!important
+
+  .mb-#{$margin}
+    margin-bottom: #{$margin}px!important
+
+  .ml-#{$margin}
+    margin-left: #{$margin}px!important
+
+  .mr-#{$margin}
+    margin-right: #{$margin}px!important
+
+.ml-auto
+  margin-left: auto
+
+.black-bg
+  background: #000
+  color: #fff
+
+.title-section
+  height: 198px
+
+.title
+  padding-top: 64px
+
+header
+  padding: 16px 23px
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  z-index: 1
+
+.row
+  --bs-gutter-x: 0
+
+.nav-list
+  margin-right: 121px
+  list-style: none
+  flex-wrap: wrap
+
+  li
+    display: inline-block
+    font-size: 10px
+    letter-spacing: 0.2em
+    margin-right: 134px
+
+    &:last-child
+      margin-right: 0
+
+  &.navbar-list
+    li
+      margin-right: 0
+      color: #fff
+      flex-basis: 100%
+      margin-bottom: 27px
+
+.lang-switcher
+  margin-right: 75px
+
+.lang-item
+  position: relative
+
+  a
+    text-decoration: none
+    color: #000
+    font-size: 10px
+    letter-spacing: .2em
+    font-weight: 400
+
+  &.active
+    a
+      font-weight: 800
+
+    &::before
+      content: ''
+      position: absolute
+      height: 2px
+      width: 100%
+      background: #000
+      bottom: -5px
+
+.menu-btn
+  border: none
+  background: none
+
+.pointer
+  cursor: pointer
+
+.with-us-section, .video-section
+  padding-top: 74px
+  padding-bottom: 65px
+
+.input
+  border: 1px solid #636363
+  border-radius: 12px
+  width: 100%
+  outline: none
+  padding: 15px
+
+  &.input__text
+    height: 56px
+
+.form-item
+  max-width: 333px
+  width: 100%
+
+  &.budget-item
+    max-width: 368px
+
+textarea
+  height: 180px
+  resize: none
+
+.button
+  text-transform: uppercase
+  border: none
+  background: #5799F8
+  box-shadow: 0px 0px 14px rgba(87, 153, 248, 0.56)
+  border-radius: 4px
+  font-size: 26px
+  letter-spacing: 0.18em
+  color: #fff
+  font-weight: 300
+  font-family: "M PLUS 1p", sans-serif
+  width: 289px
+  height: 54px
+  line-height: 54px
+  cursor: pointer
+
+  .sm
+    width: 251px
+
+.gallery-item
+  border-radius: 13px
+  background: #FCFCFC
+  box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.1)
+  height: 242px
+
+  img
+    object-fit: contain
+
+.gallery-col
+  padding-left: 17px
+  padding-right: 17px
+
+.empty-block
+  height: 453px
+  border-bottom: 0.5px solid #fff
+  margin-bottom: 85px
+
+.social-link
+  display: inline-block
+  height: 16px
+  width: 15px
+
+  // &.insta
+  //   background: url('../images/insta.svg') no-repeat
+
+.footer-nav
+  margin-right: 70px
+
+  li
+    font-size: 9px
+    letter-spacing: 0.6em
+
+.social-container
+  margin-right: 40px
+
+.anchor
+  text-decoration: none
+  color: unset
+
+.sign
+  font-size: 7px
+  letter-spacing: 0.5em
+  color: #fff
+  margin: 345px 0 0
+  padding-bottom: 45px
+
+.about-section
+  position: relative
+  height: 797px
+  background: url('../images/about_bg.png') no-repeat
+  background-size: cover
+  background-position: center
+  overflow: hidden
+
+.about-logo
+  position: absolute
+  top: -60px
+  right: -210px
+  transition: left .2s ease-in-out
+
+.about-text
+  color: #fff
+
+.about-descr
+  max-width: 380px
+  width: 100%
+  font-size: 17px
+  font-weight: 400
+
+.about-title
+  font-size: 24px
+  letter-spacing: .18em
+  margin: 93px 0 80px
+
+.about-big-title
+  font-size: 43px
+  letter-spacing: .18em
+  margin-bottom: 80px
+
+.insta_sm
+  display: none
+
+// @media (max-width: 1160px)
+//   .about-logo
+//     left: 49%
+
+.navbar
+  position: absolute
+  right: -400px
+  top: 0
+  height: 100vh
+  background: #000
+  width: 400px
+  padding: 130px 15px 15px 50px
+  transition: right .3s ease-in-out
+  z-index: 998
+
+  &.open
+    right: 0
+
+.menu__toggler
+  position: relative
+  z-index: 999
+  height: 16px
+  width: 30px
+  outline: none
+  cursor: pointer
+  display: flex
+  align-items: center
+
+  span,
+  span::before,
+  span::after
+    position: absolute
+    content: ''
+    width: 30px
+    height: 2px
+    background: #000
+    border-radius: 20px
+    transition: 400ms cubic-bezier(0.77, 0, 0.175, 1)
+
+  span::before
+    top: -7px
+
+  span::after
+    top: 7px
+
+  &.active > span
+    background: transparent
+
+  &.active > span::before,
+  &.active > span::after
+    background: #fff
+    top: 0px
+
+  &.active > span::before
+    transform: rotate(-225deg)
+
+  &.active > span::after
+    transform: rotate(225deg)
+
+@media (max-width: 1120px)
+  .main-list
+    display: none
+
+@media (max-width: 992px)
+  .about-logo
+    left: 50%
+    right: auto
+
+  .footer-nav
+    margin-top: 40px
+
+    li
+      flex-basis: 100%
+      margin-bottom: 31px
+
+  .sign
+    margin-top: 100px
+
+  .insta_lg
+    display: none
+
+  .insta_sm
+    display: block
+
+  .empty-block
+    margin-bottom: 30px
