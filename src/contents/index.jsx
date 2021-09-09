@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import { useIntl } from 'react-intl';
 
@@ -11,26 +11,37 @@ import Insta from '../images/insta.svg'
 import About from '../images/about_logo.png'
 
 import Form from "../components/form";
+import { Button, Modal, ModalFooter } from "react-bootstrap";
 
 const Home = () => {
   const { locale, formatMessage } = useIntl();
 
-  const sendMessage = async (form) => {
-    const currency = locale === 'en' ? ' euro' : ' руб.'
+  const [show, setShow] = useState(false);
 
-    form.budget = form.budget + currency
+  const handleClose = () => {
+    setShow(false)
+  };
+
+  const sendMessage = async (form) => {
+    const currency = locale === 'en' ? ' euro' : ' руб.';
+
+    const newForm = { ...form };
+
+    newForm.budget = form.budget + currency
 
     try {
       await fetch('http://localhost:3000/message', {
         mode: 'cors',
         method: 'POST',
-        body: JSON.stringify(form),
+        body: JSON.stringify(newForm),
         headers: {
           "Content-Type": "application/json"
         }
       })
+
+      setShow(true);
     } catch (e) {
-      alert(e.message)
+      throw e.message;
     }
   }
 
@@ -156,6 +167,19 @@ const Home = () => {
           </div>
         </div>
       </footer>
+
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Body>
+          <div className="fs-24">
+            Your message has been sent
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

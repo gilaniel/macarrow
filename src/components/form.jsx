@@ -8,7 +8,11 @@ import Rub from '../images/rub.svg'
 const Form = ({ onClick }) => {
   const { locale: currentLocale, formatMessage } = useIntl();
 
-  const [form, setForm] = useState({});
+  function resetForm() {
+    return { budget: '', description: '', phone: '', email: '' }
+  }
+
+  const [form, setForm] = useState(resetForm());
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,8 +23,13 @@ const Form = ({ onClick }) => {
     }));
   }
 
-  const handleSendClick = () => {
-    onClick(form)
+  const handleSendClick = async () => {
+    try {
+      await onClick(form);
+      setForm(resetForm())
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   useEffect(() => {
@@ -34,14 +43,14 @@ const Form = ({ onClick }) => {
 
   return (
     <div className="form" data-sal="fade" data-sal-delay="300" data-sal-duration="800">
-      <textarea name="description" className="input mb-60" onChange={handleInputChange}></textarea>
+      <textarea name="description" className="input mb-60" onChange={handleInputChange} value={form.description}></textarea>
 
       <div className="df ai-center">
         <div className="form-item budget-item ">
           <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'budget' })}</label>
           <div className="df ai-center mt-20">
             <div style={{ flexBasis: '100%' }}>
-              <input type="text" name="budget" className="input input__text" onChange={handleInputChange} />
+              <input type="text" name="budget" className="input input__text" onChange={handleInputChange} value={form.budget} />
             </div>
             <img src={currentLocale === 'en' ? Euro : Rub} alt="Macarrow" className="ml-20" />
           </div>
@@ -51,14 +60,14 @@ const Form = ({ onClick }) => {
           <div className="form-item mr-25">
             <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'phone' })}</label>
             <div className="mt-20">
-              <input type="text" name="phone" className="input input__text phone" onChange={handleInputChange} />
+              <input type="text" name="phone" className="input input__text phone" onChange={handleInputChange} value={form.phone} />
             </div>
           </div>
 
           <div className="form-item">
             <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'email' })}</label>
             <div className="mt-20">
-              <input type="text" name="email" className="input input__text" onChange={handleInputChange} />
+              <input type="text" name="email" className="input input__text" onChange={handleInputChange} value={form.email} />
             </div>
           </div>
         </div>
