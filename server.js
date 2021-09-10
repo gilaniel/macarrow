@@ -39,7 +39,7 @@ app.post("/message", cors(corsOptions), function (req, res) {
       res.send({ status: "ok" })
     })
     .catch(() => {
-      res.status(500).send("Something broke!")
+      res.status(500).send(e.message)
     })
 })
 
