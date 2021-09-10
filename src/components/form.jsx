@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { useIntl } from 'react-intl';
+import React, { useEffect, useState } from "react"
+import { useIntl } from "react-intl"
 import IMask from "imask"
 
-import Euro from '../images/euro.svg'
-import Rub from '../images/rub.svg'
+import Euro from "../images/euro.svg"
+import Rub from "../images/rub.svg"
 
 const Form = ({ onClick }) => {
-  const { locale: currentLocale, formatMessage } = useIntl();
+  const { locale: currentLocale, formatMessage } = useIntl()
 
   function resetForm() {
-    return { budget: '', description: '', phone: '', email: '' }
+    return { budget: "", description: "", phone: "", email: "" }
   }
 
-  const [form, setForm] = useState(resetForm());
+  const [form, setForm] = useState(resetForm())
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = e => {
+    const { name, value } = e.target
 
-    setForm((prev) => ({
+    setForm(prev => ({
       ...prev,
       [name]: value,
-    }));
+    }))
   }
 
   const handleSendClick = async () => {
     try {
-      await onClick(form);
+      await onClick(form)
       setForm(resetForm())
     } catch (e) {
       console.log(e)
@@ -33,51 +33,91 @@ const Form = ({ onClick }) => {
   }
 
   useEffect(() => {
-    const element = document.querySelector('.phone');
+    const element = document.querySelector(".phone")
     const maskOptions = {
-      mask: /^[\d ()+]+$/
-    };
+      mask: /^[\d ()+]+$/,
+    }
 
-    IMask(element, maskOptions);
+    IMask(element, maskOptions)
   }, [])
 
   return (
-    <div className="form" data-sal="fade" data-sal-delay="300" data-sal-duration="800">
-      <textarea name="description" className="input mb-60" onChange={handleInputChange} value={form.description}></textarea>
+    <div
+      className="form"
+      data-sal="fade"
+      data-sal-delay="300"
+      data-sal-duration="800"
+    >
+      <textarea
+        name="description"
+        className="input textarea"
+        onChange={handleInputChange}
+        value={form.description}
+      ></textarea>
 
-      <div className="df ai-center">
+      <div className="df ai-center form-items">
         <div className="form-item budget-item ">
-          <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'budget' })}</label>
-          <div className="df ai-center mt-20">
-            <div style={{ flexBasis: '100%' }}>
-              <input type="text" name="budget" className="input input__text" onChange={handleInputChange} value={form.budget} />
+          <label className="fs-21 ls-18 fw-normal grey-color form-label">
+            {formatMessage({ id: "budget" })}
+          </label>
+          <div className="df ai-center">
+            <div style={{ flexBasis: "100%" }}>
+              <input
+                type="text"
+                name="budget"
+                className="input input__text"
+                onChange={handleInputChange}
+                value={form.budget}
+              />
             </div>
-            <img src={currentLocale === 'en' ? Euro : Rub} alt="Macarrow" className="ml-20" />
+            <img
+              src={currentLocale === "en" ? Euro : Rub}
+              alt="Macarrow"
+              className="ml-20"
+            />
           </div>
         </div>
 
-        <div className="df jc-end ml-auto" style={{ width: '60%' }}>
-          <div className="form-item mr-25">
-            <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'phone' })}</label>
-            <div className="mt-20">
-              <input type="text" name="phone" className="input input__text phone" onChange={handleInputChange} value={form.phone} />
+        <div className="df jc-end ml-auto form-items form-items__group">
+          <div className="form-item form-item__phone">
+            <label className="fs-21 ls-18 fw-normal grey-color form-label">
+              {formatMessage({ id: "phone" })}
+            </label>
+            <div>
+              <input
+                type="text"
+                name="phone"
+                className="input input__text phone"
+                onChange={handleInputChange}
+                value={form.phone}
+              />
             </div>
           </div>
 
           <div className="form-item">
-            <label className="fs-21 ls-18 fw-normal grey-color">{formatMessage({ id: 'email' })}</label>
-            <div className="mt-20">
-              <input type="text" name="email" className="input input__text" onChange={handleInputChange} value={form.email} />
+            <label className="fs-21 ls-18 fw-normal grey-color form-label">
+              {formatMessage({ id: "email" })}
+            </label>
+            <div>
+              <input
+                type="text"
+                name="email"
+                className="input input__text"
+                onChange={handleInputChange}
+                value={form.email}
+              />
             </div>
           </div>
         </div>
       </div>
 
       <div className="df jc-center">
-        <button className="button sm mt-60 js-send-btn" onClick={handleSendClick}>{formatMessage({ id: 'send' })}</button>
+        <button className="button sm js-send-btn" onClick={handleSendClick}>
+          {formatMessage({ id: "send" })}
+        </button>
       </div>
     </div>
   )
 }
 
-export default Form;
+export default Form

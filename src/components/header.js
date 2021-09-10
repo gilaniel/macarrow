@@ -1,39 +1,50 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useIntl } from 'react-intl';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useIntl } from "react-intl"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Logo from '../images/logo.svg'
-import Aos from "aos";
-import Anchor from "./anchor";
-import NavBar from "./nav";
+import Logo from "../images/logo.svg"
+import Aos from "aos"
+import Anchor from "./anchor"
+import NavBar from "./nav"
 
 export function localizedPath(defaultLocale, locale, path) {
-  const [, base] = path.split(`/`);
-  if (locale === defaultLocale || base === locale) return path;
-  return `/${locale}${path}`;
+  const [, base] = path.split(`/`)
+  if (locale === defaultLocale || base === locale) return path
+  return `/${locale}${path}`
 }
 
 const LanguageSwitcher = ({ locales, location }) => {
-  const { locale: currentLocale, defaultLocale } = useIntl();
+  const { locale: currentLocale, defaultLocale } = useIntl()
 
   return (
     <>
       <div className="df ai-center lang-switcher">
-        {locales.map((locale) => (
-          <div key={locale} className={`lang-item mr-20 df ai-center tt-uc ${locale === currentLocale ? 'active' : ''}`}>
-            <Link to={locale === defaultLocale
-              ? location.pathname.replace(`/${currentLocale}`, '')
-              : localizedPath(defaultLocale, locale, location.pathname)}>{locale}</Link>
+        {locales.map(locale => (
+          <div
+            key={locale}
+            className={`lang-item mr-20 df ai-center tt-uc ${
+              locale === currentLocale ? "active" : ""
+            }`}
+          >
+            <Link
+              to={
+                locale === defaultLocale
+                  ? location.pathname.replace(`/${currentLocale}`, "")
+                  : localizedPath(defaultLocale, locale, location.pathname)
+              }
+            >
+              {locale}
+            </Link>
           </div>
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
 const Header = ({ location }) => {
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
 
   const { site } = useStaticQuery(graphql`
     query {
@@ -46,13 +57,13 @@ const Header = ({ location }) => {
         }
       }
     }
-  `);
+  `)
 
   React.useEffect(() => {
     Aos.init({
-      duration: 2000
-    });
-  }, []);
+      duration: 2000,
+    })
+  }, [])
 
   return (
     <>
@@ -70,14 +81,35 @@ const Header = ({ location }) => {
                   <div className="row jc-sb ai-center">
                     <div className="col-auto">
                       <ul className="nav-list main-list df ai-center tt-uc">
-                        <li className="nav-item"><Anchor className="anchor" anchor={'#work'} text={formatMessage({ id: 'work' })} /></li>
-                        <li className="nav-item"><Anchor className="anchor" anchor={'#video'} text={formatMessage({ id: 'video' })} /></li>
-                        <li className="nav-item"><Anchor className="anchor" anchor={'#contacts'} text={formatMessage({ id: 'contacts' })} /></li>
+                        <li className="nav-item">
+                          <Anchor
+                            className="anchor"
+                            anchor={"#work"}
+                            text={formatMessage({ id: "work" })}
+                          />
+                        </li>
+                        <li className="nav-item">
+                          <Anchor
+                            className="anchor"
+                            anchor={"#video"}
+                            text={formatMessage({ id: "video" })}
+                          />
+                        </li>
+                        <li className="nav-item">
+                          <Anchor
+                            className="anchor"
+                            anchor={"#contacts"}
+                            text={formatMessage({ id: "contacts" })}
+                          />
+                        </li>
                       </ul>
                     </div>
 
                     <div className="col-auto">
-                      <LanguageSwitcher location={location} locales={site.siteMetadata.i18nLocales.locales} />
+                      <LanguageSwitcher
+                        location={location}
+                        locales={site.siteMetadata.i18nLocales.locales}
+                      />
                     </div>
 
                     <div className="col-auto">
@@ -93,7 +125,6 @@ const Header = ({ location }) => {
     </>
   )
 }
-
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

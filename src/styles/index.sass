@@ -113,6 +113,9 @@ video
 .jc-end
   justify-content: flex-end
 
+.fw-wrap
+  flex-wrap: wrap
+
 .ai-center
   align-items: center
 
@@ -397,11 +400,59 @@ textarea
   &.active > span::after
     transform: rotate(225deg)
 
+.form-items__group
+  width: 60%
+
+.form-label
+  display: block
+  margin-bottom: 20px
+
+.form-item__phone
+  margin-right: 25px
+
+.textarea
+  margin: 50px 0 60px
+
+.js-send-btn
+  margin-top: 60px
+
+@media (max-width: 1200px)
+  .form-item.budget-item
+    max-width: 303px
+
 @media (max-width: 1120px)
   .main-list
     display: none
 
 @media (max-width: 992px)
+  .form-items__group
+    width: 100%
+
+  .form-items
+    flex-wrap: wrap
+
+    .form-item
+      max-width: 100%
+      flex-basis: 100%
+      margin-bottom: 40px
+
+  .form-label
+    display: block
+    margin-bottom: 10px
+    font-size: 16px
+
+  .area-label
+    font-size: 16px
+
+  .form-item__phone
+    margin-right: 0
+
+  .js-send-btn
+    margin-top: 10px
+
+  .textarea
+    margin: 10px 0 20px
+
   .about-logo
     left: 50%
     right: auto
