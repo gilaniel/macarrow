@@ -38,7 +38,7 @@ app.post("/message", cors(corsOptions), function (req, res) {
     .then(() => {
       res.send({ status: "ok" })
     })
-    .catch(() => {
+    .catch(e => {
       res.status(500).send(e.message)
     })
 })
