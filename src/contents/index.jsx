@@ -33,7 +33,7 @@ const Home = () => {
     newForm.budget = form.budget + currency
 
     try {
-      await fetch("http://localhost:3000/message", {
+      await fetch("http://134.0.118.193:3000/message", {
         mode: "cors",
         method: "POST",
         body: JSON.stringify(newForm),
