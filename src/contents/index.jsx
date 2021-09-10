@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Slider from "react-slick"
 import { Link } from "gatsby"
 import { useIntl } from "react-intl"
 
@@ -50,6 +51,10 @@ const Home = () => {
     } catch (e) {
       throw e.message
     }
+  }
+
+  function Arrow(props) {
+    return null
   }
 
   return (
@@ -145,27 +150,45 @@ const Home = () => {
 
           <div
             className="gallery mb-80"
-            data-sal="fade"
-            data-sal-delay="300"
-            data-sal-duration="800"
+            // data-sal="fade"
+            // data-sal-delay="300"
+            // data-sal-duration="800"
           >
-            <div className="row">
-              <div className="col-4 gallery-col">
+            <Slider
+              prevArrow={<Arrow />}
+              nextArrow={<Arrow />}
+              adaptiveHeight
+              swipeToSlide
+              variableWidth
+              slidesToShow={1}
+              infinite={true}
+              centerMode={true}
+              responsive={[
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                    centerMode: false,
+                  },
+                },
+              ]}
+            >
+              <div className="gallery-col">
                 <div className="gallery-item">
                   <img src={GalleryImg} alt="Macarrow" />
                 </div>
               </div>
-              <div className="col-4 gallery-col">
+              <div className="gallery-col">
                 <div className="gallery-item">
                   <img src={GalleryImg} alt="Macarrow" />
                 </div>
               </div>
-              <div className="col-4 gallery-col">
+              <div className="gallery-col">
                 <div className="gallery-item">
                   <img src={GalleryImg} alt="Macarrow" />
                 </div>
               </div>
-            </div>
+            </Slider>
           </div>
 
           <div className="df jc-center">
