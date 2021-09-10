@@ -23,7 +23,7 @@ app.post("/message", cors(corsOptions), function (req, res) {
     "<b>Budget</b>: " + encodeURI(budget),
     "<b>Phone</b>: " + encodeURI(phone),
     "<b>Email</b>: " + encodeURI(email),
-    description,
+    encodeURI(description),
   ]
   let msg = ""
 
