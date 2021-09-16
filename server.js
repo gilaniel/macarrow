@@ -7,7 +7,12 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 
 var corsOptions = {
-  origin: ["http://134.0.118.193", "http://134.0.118.193:3000"],
+  origin: [
+    "https://macarrowstudio.com/",
+    "https://www.macarrowstudio.com/",
+    "http://134.0.118.193",
+    "http://134.0.118.193:3000",
+  ],
   optionsSuccessStatus: 200,
 }
 

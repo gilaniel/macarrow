@@ -31,7 +31,7 @@ function Seo({ description, lang, meta, title }) {
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: "",
         },
         {
           property: `og:title`,
@@ -39,7 +39,7 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: "",
         },
         {
           property: `og:type`,
@@ -59,7 +59,7 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: "",
         },
       ].concat(meta)}
     />
